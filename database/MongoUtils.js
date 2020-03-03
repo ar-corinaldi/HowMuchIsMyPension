@@ -3,6 +3,7 @@ const MongoClient = require("mongodb").MongoClient;
 // Modulo utilizado para la base de datos
 function MongoUtils() {
   const mu = {};
+  // Valentina Chacón: estas variables se declaran pero no se usan en las distintas funciones del codigo
   let DB_USERNAME = process.env.DB_USERNAME,
     DB_PASSWORD = process.env.DB_PASSWORD,
     DB_NAME = process.env.DB_NAME;
@@ -17,6 +18,7 @@ function MongoUtils() {
   mu.port = (port) => arguments.length !== 0 ? ((mu.port = port), mu) : port;
   mu.hostname = (hostname) => arguments.length !== 0 ? ((mu.hostname = hostname), mu) : hostname;
   mu.url = url;
+  // Valentina Chacón: no es necesario llamar el mu.connect en todas las funciones, como lo ponen ya hace que la promesa sea publica por lo que no tienen por que incluirla dentro del resto
   mu.connect = () => {
     const options = { useUnifiedTopology: true, useNewUrlParser: true };
     url = `mongodb+srv://${username}:${password}@pensiondb-y5joy.mongodb.net/test?retryWrites=true&w=majority`;
@@ -29,6 +31,7 @@ function MongoUtils() {
   mu.ipcs.find = query => {
     return mu.connect()
       .then((client) => {
+      // Valentina Chacón: el nombre de la collection tambien podria ser una variable
         const ipcs = client.db(dbName).collection("ipcs");
         console.log("Querrying ipcs", query);
         return ipcs.find(query)
@@ -41,6 +44,7 @@ function MongoUtils() {
 
   //Da cotizaciones de un usuario 
   mu.cotizaciones.find = query => {
+    // Valentina Chacón: no es necesario llamar el mu.connect aqui, en el fetch se puede llamar el connect y esa promesa se le pasa a la siguiente promesa
     return mu.connect()
       .then((client) => {
         const cotizaciones = client.db(dbName).collection("cotizaciones");
@@ -53,6 +57,7 @@ function MongoUtils() {
 
   // inserta cotizaciones de un usuario
   mu.cotizaciones.insert = (query) => {
+    // Valentina Chacón: no es necesario llamar el mu.connect aqui, en el fetch se puede llamar el connect y esa promesa se le pasa a la siguiente promesa
     return mu.connect()
       .then(client => {
         console.log("Inserting cotizacion", query);
@@ -64,6 +69,7 @@ function MongoUtils() {
 
   // Elimina cotizaciones de un usuario
   mu.cotizaciones.delete = (query) => {
+    // Valentina Chacón: no es necesario llamar el mu.connect aqui, en el fetch se puede llamar el connect y esa promesa se le pasa a la siguiente promesa
     return mu.connect()
       .then(client => {
         console.log("Deleting a cotizacion", query);
@@ -83,6 +89,7 @@ function MongoUtils() {
 
   // Encuentra un usuario para la sesion
   mu.passport.findOne = (query) => {
+    // Valentina Chacón: no es necesario llamar el mu.connect aqui, en el fetch se puede llamar el connect y esa promesa se le pasa a la siguiente promesa
     return mu.connect()
       .then(client => {
         const usuarios = client.db(dbName).collection("usuarios");
