@@ -5,7 +5,6 @@ const pension = require("../modules/pension");
 
 /* GET users listing. */
 router.get("/", function (req, res) {
-  console.log(req.user);
   const user = req.user;
   if (!user) {
     res.redirect("/login");

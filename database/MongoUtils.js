@@ -10,8 +10,9 @@ function MongoUtils() {
   // Variables
   let username = DB_USERNAME,
     password = DB_PASSWORD,
-    dbName = DB_NAME,
-    url = `mongodb+srv://${username}:${password}@pensiondb-y5joy.mongodb.net/test?retryWrites=true&w=majority`;
+    dbName = DB_NAME || "PensionDB", //You should write here you DB name
+    url = `mongodb+srv://${username}}:${password}@pensiondb-y5joy.mongodb.net/test?retryWrites=true&w=majority`;
+  // if (!username || !password ) url = "mongodb://localhost:27017";
   // Getters
   mu.dbName = (name) => arguments.length !== 0 ? ((mu.dbName = name), mu) : dbName;
   mu.port = (port) => arguments.length !== 0 ? ((mu.port = port), mu) : port;
@@ -19,7 +20,6 @@ function MongoUtils() {
   mu.url = url;
   mu.connect = () => {
     const options = { useUnifiedTopology: true, useNewUrlParser: true };
-    url = `mongodb+srv://${username}:${password}@pensiondb-y5joy.mongodb.net/test?retryWrites=true&w=majority`;
     const client = new MongoClient(url, options);
     return client.connect();
   };

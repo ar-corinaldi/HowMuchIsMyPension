@@ -3,7 +3,7 @@
 function Pension() {
   const mu = {};
   // Variables
-  let ipcActual =  parseFloat(process.env.IPC_ACTUAL),
+  let ipcActual =  parseFloat(process.env.IPC_ACTUAL) || 104.24,
     salarioMinimo = 877803.0;
   mu.ipcActual = ipcActual;
 
