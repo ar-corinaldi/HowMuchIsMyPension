@@ -11,7 +11,7 @@ function MongoUtils() {
   let username = DB_USERNAME,
     password = DB_PASSWORD,
     dbName = DB_NAME || "PensionDB", //You should write here you DB name
-    url = `mongodb+srv://${username}}:${password}@pensiondb-y5joy.mongodb.net/test?retryWrites=true&w=majority`;
+    url = `mongodb+srv://${username}:${password}@pensiondb-y5joy.mongodb.net/test?retryWrites=true&w=majority`;
   // if (!username || !password ) url = "mongodb://localhost:27017";
   // Getters
   mu.dbName = (name) => arguments.length !== 0 ? ((mu.dbName = name), mu) : dbName;
