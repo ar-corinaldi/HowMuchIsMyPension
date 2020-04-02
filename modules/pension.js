@@ -8,7 +8,7 @@ function Pension() {
   mu.ipcActual = ipcActual;
 
   // Me da el porcentaje de liquidacion de la pension
-  mu.r = (cotizaciones) => 65.5 - 0.5/mu.salariosMinimos(cotizaciones);
+  mu.r = (cotizaciones) => 65.5 - 0.5*mu.salariosMinimos(cotizaciones);
 
   // Numero de salarios minimos con respecto
   // al promedio de salarios cotizados en la actualidad
