@@ -46,7 +46,7 @@
 *::after {
   box-sizing: border-box;
 }
-
+/*Valentina Chacon: Es importante documentar que parte del archivo css corresponde a que componentes del html*/
 html {
   font-family: sans-serif;
   line-height: 1.15;
